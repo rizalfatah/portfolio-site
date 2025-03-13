@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -7,6 +6,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
     if (window.scrollY > 10) {
@@ -36,24 +36,31 @@ const Navbar = () => {
     }
   };
 
+  // Define text color classes based on scroll position
+  const textColorClass = isScrolled ? 'text-foreground' : 'text-white';
+  const textHoverClass = isScrolled ? 'hover:text-primary' : 'hover:text-primary/90';
+  const logoTextColorClass = isScrolled ? 'text-foreground' : 'text-white';
+  // Add text shadow class for better visibility on dark backgrounds
+  const textShadowClass = isScrolled ? '' : 'text-shadow';
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-      isScrolled ? 'glass shadow-md backdrop-blur-md py-4' : 'bg-transparent py-6'
+    <nav ref={navbarRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+      isScrolled ? 'glass shadow-md backdrop-blur-md py-4' : 'bg-black/15 backdrop-blur-sm py-6'
     }`}>
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a
               href="#"
-              className="text-xl font-bold text-foreground flex items-center"
+              className={`text-xl font-bold ${logoTextColorClass} ${textShadowClass} flex items-center transition-colors duration-200`}
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
-              <span className="text-primary mr-1">&lt;</span>
+              <span className="text-primary mr-1 drop-shadow-glow">&lt;</span>
               <span>DevName</span>
-              <span className="text-primary">/&gt;</span>
+              <span className="text-primary drop-shadow-glow">/&gt;</span>
             </a>
           </div>
 
@@ -63,7 +70,7 @@ const Navbar = () => {
               <button 
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="text-foreground/80 hover:text-primary transition-colors duration-200 link-underline capitalize"
+                className={`${textColorClass} ${!isScrolled && 'font-medium'} ${textShadowClass} ${textHoverClass} transition-colors duration-200 link-underline capitalize`}
               >
                 {item}
               </button>
@@ -73,7 +80,7 @@ const Navbar = () => {
           {/* Mobile Navigation */}
           <div className="md:hidden">
             <button
-              className="text-foreground focus:outline-none"
+              className={`${textColorClass} ${textShadowClass} focus:outline-none transition-colors duration-200`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -85,17 +92,20 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobile && (
         <div
-          className={`fixed inset-0 glass-dark z-40 transform transition-transform duration-300 ease-in-out ${
-            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`fixed inset-x-0 bottom-0 glass-dark z-40 transform transition-transform duration-300 ease-in-out ${
+            mobileMenuOpen ? 'translate-y-0' : 'translate-y-full'
           }`}
-          style={{ top: '64px' }}
+          style={{ 
+            top: navbarRef.current ? navbarRef.current.clientHeight + 'px' : '80px',
+            height: `calc(100vh - ${navbarRef.current ? navbarRef.current.clientHeight : 80}px)`
+          }}
         >
           <div className="flex flex-col items-center justify-center h-full space-y-8 p-4">
             {['about', 'projects', 'experience', 'contact'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="text-foreground hover:text-primary text-2xl transition-colors duration-200 capitalize"
+                className="text-white hover:text-primary text-2xl transition-colors duration-200 capitalize"
               >
                 {item}
               </button>
