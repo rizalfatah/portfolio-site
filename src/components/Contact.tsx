@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Send, Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
 
@@ -9,28 +8,28 @@ const Contact = () => {
     subject: '',
     message: '',
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const validateForm = () => {
-    const newErrors: {[key: string]: string} = {};
-    
+    const newErrors: { [key: string]: string } = {};
+
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
-    
+
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -38,7 +37,7 @@ const Contact = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => {
@@ -51,16 +50,16 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      
+
       // Reset form after a delay
       setTimeout(() => {
         setIsSubmitted(false);
@@ -89,7 +88,7 @@ const Contact = () => {
           <div className="reveal opacity-0">
             <div className="bg-card p-8 rounded-lg shadow-card border border-border">
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
@@ -102,7 +101,7 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                     <Phone size={20} />
@@ -114,7 +113,7 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                     <MapPin size={20} />
@@ -127,23 +126,23 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-12 p-6 bg-primary/5 rounded-lg border border-primary/10">
                 <h4 className="text-lg font-semibold mb-2">Availability</h4>
                 <p className="text-muted-foreground">
-                  Currently available for freelance projects and consulting. 
+                  Currently available for freelance projects and consulting.
                   I typically respond to all inquiries within 24 hours.
                 </p>
               </div>
             </div>
           </div>
-          
+
           {/* Contact Form */}
           <div className="reveal opacity-0 animate-delay-200">
             <div className="bg-card p-8 rounded-lg shadow-card border border-border relative overflow-hidden">
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center h-full py-12 animate-scale-in">
-                  <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-4">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
                     <CheckCircle size={32} />
                   </div>
                   <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
@@ -163,16 +162,15 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-md border ${
-                        errors.name ? 'border-red-500' : 'border-border'
-                      } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-md border ${errors.name ? 'border-red-500' : 'border-border'
+                        } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
                       placeholder="John Doe"
                     />
                     {errors.name && (
                       <p className="mt-1 text-sm text-red-500">{errors.name}</p>
                     )}
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium mb-1">
                       Your Email
@@ -183,16 +181,15 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-md border ${
-                        errors.email ? 'border-red-500' : 'border-border'
-                      } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-md border ${errors.email ? 'border-red-500' : 'border-border'
+                        } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
                       placeholder="john@example.com"
                     />
                     {errors.email && (
                       <p className="mt-1 text-sm text-red-500">{errors.email}</p>
                     )}
                   </div>
-                  
+
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium mb-1">
                       Subject <span className="text-muted-foreground">(Optional)</span>
@@ -207,7 +204,7 @@ const Contact = () => {
                       placeholder="Project Inquiry"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-1">
                       Your Message
@@ -218,22 +215,20 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className={`w-full px-4 py-3 rounded-md border ${
-                        errors.message ? 'border-red-500' : 'border-border'
-                      } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-md border ${errors.message ? 'border-red-500' : 'border-border'
+                        } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
                       placeholder="Hello, I'd like to discuss a project..."
                     ></textarea>
                     {errors.message && (
                       <p className="mt-1 text-sm text-red-500">{errors.message}</p>
                     )}
                   </div>
-                  
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full flex items-center justify-center px-6 py-3 rounded-md text-white font-medium bg-primary transition-all duration-300 ${
-                      isSubmitting ? 'opacity-80' : 'hover:bg-primary/90'
-                    }`}
+                    className={`w-full flex items-center justify-center px-6 py-3 rounded-md text-white font-medium bg-primary transition-all duration-300 ${isSubmitting ? 'opacity-80' : 'hover:bg-primary/90'
+                      }`}
                   >
                     {isSubmitting ? (
                       <>
@@ -252,7 +247,7 @@ const Contact = () => {
                   </button>
                 </form>
               )}
-              
+
               {/* Background elements */}
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full"></div>
               <div className="absolute -top-5 -left-5 w-20 h-20 bg-primary/5 rounded-full"></div>

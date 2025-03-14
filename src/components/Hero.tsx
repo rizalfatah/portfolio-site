@@ -1,9 +1,11 @@
-
 import React, { useEffect, useRef } from 'react';
 import { ArrowDown, Code, Database, Server } from 'lucide-react';
+import { useTheme } from '@/lib/theme-provider';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -33,17 +35,17 @@ const Hero = () => {
   return (
     <div ref={heroRef} className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-black text-white">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-indigo-900/10 via-black to-black z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-black to-black z-0"></div>
       <div className="absolute inset-0 bg-grid-pattern opacity-30 z-0"></div>
       
       {/* Animated Floating Elements */}
-      <div className="parallax absolute top-1/4 left-1/4 text-blue-500/30 will-change-transform" data-speed="1">
+      <div className="parallax absolute top-1/4 left-1/4 text-primary/30 will-change-transform" data-speed="1">
         <Database size={120} className="animate-float" style={{ animationDelay: '0s' }} />
       </div>
-      <div className="parallax absolute bottom-1/4 right-1/4 text-purple-500/30 will-change-transform" data-speed="1.5">
+      <div className="parallax absolute bottom-1/4 right-1/4 text-accent/30 will-change-transform" data-speed="1.5">
         <Server size={140} className="animate-float" style={{ animationDelay: '1s' }} />
       </div>
-      <div className="parallax absolute top-1/3 right-1/3 text-green-500/30 will-change-transform" data-speed="2">
+      <div className="parallax absolute top-1/3 right-1/3 text-primary/30 will-change-transform" data-speed="2">
         <Code size={160} className="animate-float" style={{ animationDelay: '2s' }} />
       </div>
       
@@ -57,7 +59,7 @@ const Hero = () => {
         
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-down" style={{ animationDelay: '500ms' }}>
           Crafting Powerful<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
             Backend Solutions
           </span>
         </h1>

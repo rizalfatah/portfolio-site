@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import MainLayout from '@/layouts/MainLayout';
 import Hero from '@/components/Hero';
@@ -12,9 +11,9 @@ const Index = () => {
   }, []);
 
   return (
-    <MainLayout>
+    <MainLayout backgroundVariant="dots">
       <Hero />
-      <div className="py-10 bg-white">
+      <div className="py-10 bg-background">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center reveal opacity-0">
             <h2 className="section-title">About Me</h2>
@@ -27,7 +26,7 @@ const Index = () => {
               I specialize in Node.js, Python, and Go, with extensive experience in cloud platforms like AWS and GCP.
               My focus is on creating efficient, maintainable backend systems that power exceptional user experiences.
             </p>
-            
+
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary">6+</div>

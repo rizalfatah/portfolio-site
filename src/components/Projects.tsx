@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Eye, Github, ExternalLink, X } from 'lucide-react';
 import ProjectDetail from './ProjectDetail';
@@ -126,7 +125,7 @@ const Projects = () => {
                 <div className="flex gap-4">
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="flex items-center gap-2 px-4 py-2 bg-white text-black rounded-full font-medium transform transition-all hover:scale-105"
+                    className="flex items-center gap-2 px-4 py-2 bg-background text-foreground rounded-full font-medium transform transition-all hover:scale-105"
                   >
                     <Eye size={16} />
                     <span>Details</span>
@@ -137,7 +136,7 @@ const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-[#24292e] text-white rounded-full font-medium transform transition-all hover:scale-105"
+                      className="flex items-center gap-2 px-4 py-2 bg-card text-foreground rounded-full font-medium transform transition-all hover:scale-105"
                     >
                       <Github size={16} />
                       <span>Code</span>

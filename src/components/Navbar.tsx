@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,9 +45,8 @@ const Navbar = () => {
   const textShadowClass = isScrolled ? '' : 'text-shadow';
 
   return (
-    <nav ref={navbarRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-      isScrolled ? 'glass shadow-md backdrop-blur-md py-4' : 'bg-black/15 backdrop-blur-sm py-6'
-    }`}>
+    <nav ref={navbarRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${isScrolled ? 'glass shadow-md backdrop-blur-md py-4' : 'bg-black/15 backdrop-blur-sm py-6'
+      }`}>
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -67,7 +67,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {['about', 'projects', 'experience', 'contact'].map((item) => (
-              <button 
+              <button
                 key={item}
                 onClick={() => scrollToSection(item)}
                 className={`${textColorClass} ${!isScrolled && 'font-medium'} ${textShadowClass} ${textHoverClass} transition-colors duration-200 link-underline capitalize`}
@@ -75,10 +75,12 @@ const Navbar = () => {
                 {item}
               </button>
             ))}
+            <ThemeToggle className={textColorClass} />
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-4">
+            <ThemeToggle className={textColorClass} />
             <button
               className={`${textColorClass} ${textShadowClass} focus:outline-none transition-colors duration-200`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -92,10 +94,9 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobile && (
         <div
-          className={`fixed inset-x-0 bottom-0 glass-dark z-40 transform transition-transform duration-300 ease-in-out ${
-            mobileMenuOpen ? 'translate-y-0' : 'translate-y-full'
-          }`}
-          style={{ 
+          className={`fixed inset-x-0 bottom-0 glass-dark z-40 transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? 'translate-y-0' : 'translate-y-full'
+            }`}
+          style={{
             top: navbarRef.current ? navbarRef.current.clientHeight + 'px' : '80px',
             height: `calc(100vh - ${navbarRef.current ? navbarRef.current.clientHeight : 80}px)`
           }}
