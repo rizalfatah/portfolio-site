@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <a href="#" className="text-2xl font-bold flex items-center">
               <span className="text-primary mr-1">&lt;</span>
-              <span>DevName</span>
+              <span>RizalFatah</span>
               <span className="text-primary">/&gt;</span>
             </a>
             <p className="mt-2 text-muted-foreground max-w-md">
