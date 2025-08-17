@@ -33,7 +33,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div ref={heroRef} className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background text-foreground">
+    <div ref={heroRef} className="relative min-h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-background text-foreground">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background z-0"></div>
       <div className="absolute inset-0 bg-grid-pattern opacity-30 z-0"></div>
