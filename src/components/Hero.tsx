@@ -33,9 +33,9 @@ const Hero = () => {
   }, []);
 
   return (
-    <div ref={heroRef} className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-black text-white">
+    <div ref={heroRef} className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background text-foreground">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-black to-black z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background z-0"></div>
       <div className="absolute inset-0 bg-grid-pattern opacity-30 z-0"></div>
 
       {/* Animated Floating Elements */}
@@ -64,7 +64,7 @@ const Hero = () => {
           </span>
         </h1>
 
-        <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 mb-8 animate-slide-down" style={{ animationDelay: '700ms' }}>
+        <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-8 animate-slide-down" style={{ animationDelay: '700ms' }}>
           Specialized in building robust, scalable, and high-performance backend systems
           that power modern applications.
         </p>
@@ -74,7 +74,7 @@ const Hero = () => {
             onClick={() => {
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="px-8 py-3 rounded-md bg-primary hover:bg-primary/90 text-white font-medium transition-all duration-300 transform hover:scale-105"
+            className="px-8 py-3 rounded-md bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-all duration-300 transform hover:scale-105"
           >
             Get in Touch
           </button>
@@ -82,7 +82,7 @@ const Hero = () => {
             onClick={() => {
               document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="px-8 py-3 rounded-md bg-white/10 hover:bg-white/20 text-white font-medium transition-all duration-300 backdrop-blur-sm border border-white/10"
+            className="px-8 py-3 rounded-md bg-secondary/20 hover:bg-secondary/30 text-foreground font-medium transition-all duration-300 backdrop-blur-sm border border-border"
           >
             View Projects
           </button>
@@ -93,7 +93,7 @@ const Hero = () => {
       <div className="absolute bottom-10 animate-bounce">
         <button
           onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-          className="flex flex-col items-center text-gray-400 hover:text-white transition-colors duration-300"
+          className="flex flex-col items-center text-muted-foreground hover:text-foreground transition-colors duration-300"
         >
           <span className="text-sm mb-2">Scroll Down</span>
           <ArrowDown size={20} />
