@@ -28,7 +28,7 @@ const App = () => {
   }, []);
 
   return (
-    <ThemeProvider defaultTheme="system" storageKey="hero-hub-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="hero-hub-theme">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
