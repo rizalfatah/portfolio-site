@@ -96,8 +96,8 @@ const Contact = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-sm font-medium text-muted-foreground">Email</h4>
-                    <a href="mailto:hello@example.com" className="text-lg font-medium hover:text-primary transition-colors">
-                      hello@example.com
+                    <a href="mailto:rizal.fatah.rsf@gmail.com" className="text-lg font-medium hover:text-primary transition-colors">
+                      rizal.fatah.rsf@gmail.com
                     </a>
                   </div>
                 </div>
@@ -109,7 +109,7 @@ const Contact = () => {
                   <div className="ml-4">
                     <h4 className="text-sm font-medium text-muted-foreground">Phone</h4>
                     <a href="tel:+1234567890" className="text-lg font-medium hover:text-primary transition-colors">
-                      +1 (234) 567-890
+                      +62 8954 0164 2995
                     </a>
                   </div>
                 </div>
@@ -121,16 +121,22 @@ const Contact = () => {
                   <div className="ml-4">
                     <h4 className="text-sm font-medium text-muted-foreground">Location</h4>
                     <p className="text-lg font-medium">
-                      San Francisco, California
+                      Sukoharjo, Central Java
                     </p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-12 p-6 bg-primary/5 rounded-lg border border-primary/10">
-                <h4 className="text-lg font-semibold mb-2">Availability</h4>
+                <div className="flex items-center gap-2 mb-2">
+                  <h4 className="text-lg font-semibold">Availability</h4>
+                </div>
                 <p className="text-muted-foreground">
-                  Currently available for freelance projects and consulting.
+                  Currently
+                  <div className="mx-1 inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="mr-1 text-green-500 font-medium">Available</span>
+                  
+                  for freelance projects and consulting.
                   I typically respond to all inquiries within 24 hours.
                 </p>
               </div>
@@ -164,7 +170,7 @@ const Contact = () => {
                       onChange={handleChange}
                       className={`w-full px-4 py-3 rounded-md border ${errors.name ? 'border-red-500' : 'border-border'
                         } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
-                      placeholder="John Doe"
+                      placeholder="Si Fulan"
                     />
                     {errors.name && (
                       <p className="mt-1 text-sm text-red-500">{errors.name}</p>
@@ -183,7 +189,7 @@ const Contact = () => {
                       onChange={handleChange}
                       className={`w-full px-4 py-3 rounded-md border ${errors.email ? 'border-red-500' : 'border-border'
                         } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
-                      placeholder="john@example.com"
+                      placeholder="fulan@gmail.com"
                     />
                     {errors.email && (
                       <p className="mt-1 text-sm text-red-500">{errors.email}</p>
