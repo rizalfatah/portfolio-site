@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { Calendar, Briefcase, GraduationCap } from 'lucide-react';
 
 interface TimelineItem {
@@ -9,53 +8,71 @@ interface TimelineItem {
   period: string;
   description: string;
   skills: string[];
-  type: 'work' | 'education';
+  type: 'work' | 'education' | 'certification';
 }
 
 const timelineItems: TimelineItem[] = [
   {
     id: 1,
-    title: "Senior Backend Engineer",
-    organization: "TechCorp Inc.",
-    period: "June 2022 - Present",
-    description: "Lead a team of 5 engineers developing scalable microservices architecture. Implemented distributed tracing and monitoring systems, resulting in 40% reduction in MTTR for production issues.",
-    skills: ["Node.js", "Kubernetes", "Kafka", "MongoDB", "CI/CD", "Team Leadership"],
+    title: "IT Manager",
+    organization: "Merapi Online Corporation",
+    period: "October 2022 - January 2025",
+    description: "Led technical team (Support, Network, Developer) and managed entire IT infrastructure including hardware, software, and networks. Designed and implemented automated parking system that significantly increased operational efficiency and reduced labor costs. Built on-premise containerized servers (Docker, LXC) saving external infrastructure subscription costs.",
+    skills: ["Docker", "LXC", "Proxmox", "Laravel", "Node.js", "React.js", "MariaDB", "Zabbix", "Team Leadership"],
     type: "work"
   },
   {
     id: 2,
-    title: "Backend Developer",
-    organization: "DataFlow Systems",
-    period: "April 2020 - May 2022",
-    description: "Designed and implemented RESTful APIs and real-time data processing pipelines handling 10M+ daily events. Optimized database queries, reducing response times by 60%.",
-    skills: ["Python", "Django", "PostgreSQL", "Redis", "Docker", "AWS"],
+    title: "Software Engineer (Freelance)",
+    organization: "Sinergi Visi Utama",
+    period: "2023",
+    description: "Built web application for recording and managing reading interest data for Community Reading Gardens (TGM) & Mobile Library Units (UPK). Responsible for the entire development cycle from database design to user interface implementation.",
+    skills: ["Laravel", "PHP", "Database Design", "Full-Stack Development", "UI/UX Design"],
     type: "work"
   },
   {
     id: 3,
-    title: "Master's in Computer Science",
-    organization: "Tech University",
-    period: "September 2018 - March 2020",
-    description: "Specialized in Distributed Systems and Cloud Computing. Master's thesis on fault-tolerant microservices architecture.",
-    skills: ["Distributed Systems", "Cloud Computing", "Algorithm Design", "System Architecture"],
-    type: "education"
+    title: "IT System Administrator (Freelance)",
+    organization: "PT Sadasa Akademi Indonesia",
+    period: "2023",
+    description: "Deployed 'Sehatcerdas' application on government Virtual Private Server (VPS). Configured server environment, database, and web server to ensure optimal and secure application performance.",
+    skills: ["VPS Management", "Server Configuration", "Database Administration", "Web Server Setup", "Security Configuration"],
+    type: "work"
   },
   {
     id: 4,
-    title: "Junior Backend Developer",
-    organization: "StartupHub",
-    period: "June 2016 - August 2018",
-    description: "Developed and maintained backend services for a SaaS product. Implemented authentication, payment processing, and notification systems.",
-    skills: ["JavaScript", "Express.js", "MySQL", "API Design", "Git"],
+    title: "IT Support & Infrastructure Specialist",
+    organization: "Merapi Online Corporation",
+    period: "May 2018 - September 2022",
+    description: "Built, managed, and monitored server and network infrastructure for operational stability and security. Managed virtualization and container-based servers (Docker, LXC Proxmox) for scalable applications. Developed and deployed internal web applications based on business needs. Implemented system security policies and performed regular data backups.",
+    skills: ["Docker", "LXC", "Proxmox", "System Administration", "Network Management", "Web Development", "Database Management"],
     type: "work"
   },
   {
     id: 5,
-    title: "Bachelor's in Software Engineering",
-    organization: "University of Technology",
-    period: "September 2012 - May 2016",
-    description: "Graduated with honors. Focused on software engineering principles, database systems, and web development.",
-    skills: ["Software Engineering", "Data Structures", "Web Development", "Algorithms"],
+    title: "Machine Learning Participant",
+    organization: "Bangkit Academy by Google, GoTo, & Traveloka",
+    period: "2022",
+    description: "Completed intensive independent study program with industry curriculum covering Machine Learning fundamentals, TensorFlow, and data processing. Developed capstone project 'Bank Sampah' application with deep learning model using TensorFlow for automatic waste classification into 5 categories. Enhanced soft skills including time management, critical thinking, and English proficiency.",
+    skills: ["Machine Learning", "TensorFlow", "Deep Learning", "Data Processing", "Python", "Project Management"],
+    type: "certification"
+  },
+  {
+    id: 6,
+    title: "S1 Informatika",
+    organization: "Universitas AKPRIND Indonesia",
+    period: "September 2019 - August 2025",
+    description: "Bachelor's degree in Informatics with GPA 3.91. Focused on software engineering, system analysis, database design, and web development technologies.",
+    skills: ["Software Engineering", "System Analysis", "Database Design", "Web Development", "Algorithm Design"],
+    type: "education"
+  },
+  {
+    id: 7,
+    title: "Teknik Komputer dan Jaringan",
+    organization: "SMK Negeri 1 Sukoharjo",
+    period: "2015 - 2018",
+    description: "Vocational High School specializing in Computer and Network Engineering. Won 1st place in LKS 2017 at district level for IT Network System Administration, demonstrating excellence in network infrastructure and system administration.",
+    skills: ["Network Administration", "System Administration", "Hardware Maintenance", "Network Security"],
     type: "education"
   },
 ];
@@ -67,7 +84,7 @@ const Experience = () => {
         <div className="text-center mb-16 reveal opacity-0">
           <h2 className="section-title">Experience & Education</h2>
           <p className="section-subtitle mx-auto">
-            My professional journey and educational background in backend development
+My professional journey and educational background in IT management and full-stack development
           </p>
         </div>
 
