@@ -1,5 +1,5 @@
-import React from 'react';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import React from "react";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,12 +11,12 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <a href="#" className="text-2xl font-bold flex items-center">
               <span className="text-primary mr-1">&lt;</span>
-              <span>RizalFatah</span>
+              <span>Coding</span>
               <span className="text-primary">/&gt;</span>
             </a>
             <p className="mt-2 text-muted-foreground max-w-md">
-              Building robust, scalable backend solutions that power
-              the web applications of tomorrow.
+              Building robust, scalable backend solutions that power the web
+              applications of tomorrow.
             </p>
           </div>
 
@@ -58,12 +58,12 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            &copy; {currentYear} DevName. All rights reserved.
+            &copy; {currentYear} RizalFatah. All rights reserved.
           </p>
 
           <div className="mt-4 md:mt-0">
             <nav className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
-              {['About', 'Projects', 'Experience', 'Contact'].map((item) => (
+              {["Projects", "Experience", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}

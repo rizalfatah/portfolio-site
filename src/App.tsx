@@ -21,7 +21,7 @@ const App = () => {
     const observer = new MutationObserver(setupRevealAnimations);
     observer.observe(document.body, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
 
     return () => observer.disconnect();
