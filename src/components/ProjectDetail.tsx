@@ -1,7 +1,6 @@
-
-import React, { useEffect, useState } from 'react';
-import { X, ArrowLeft, ArrowRight } from 'lucide-react';
-import type { Project } from './Projects';
+import React, { useEffect, useState } from "react";
+import { X, ArrowLeft, ArrowRight } from "lucide-react";
+import type { Project } from "./Projects";
 
 interface ProjectDetailProps {
   project: Project;
@@ -10,79 +9,78 @@ interface ProjectDetailProps {
 
 const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+
   useEffect(() => {
     // Prevent scrolling when modal is open
-    document.body.style.overflow = 'hidden';
-    
+    document.body.style.overflow = "hidden";
+
     // Handle escape key
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape") onClose();
     };
-    
-    window.addEventListener('keydown', handleKeyDown);
-    
+
+    window.addEventListener("keydown", handleKeyDown);
+
     return () => {
-      document.body.style.overflow = 'auto';
-      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClose]);
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
+    setCurrentImageIndex(prev => (prev + 1) % project.images.length);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length);
+    setCurrentImageIndex(
+      prev => (prev - 1 + project.images.length) % project.images.length
+    );
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div
-        className="absolute inset-0 z-0"
-        onClick={onClose}
-      ></div>
-      
-      <div className="relative z-10 bg-card max-w-4xl w-full rounded-lg shadow-lg animate-scale-in overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-sm">
+      <div className="absolute inset-0 z-0" onClick={onClose}></div>
+
+      <div className="relative z-10 w-full max-w-4xl animate-scale-in overflow-hidden rounded-lg bg-card shadow-lg">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+          className="absolute right-4 top-4 z-20 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
         >
           <X size={20} />
         </button>
-        
+
         {/* Image gallery */}
-        <div className="relative h-64 md:h-80 overflow-hidden bg-black">
+        <div className="relative h-64 overflow-hidden bg-black md:h-80">
           {project.images.length > 0 && (
             <img
               src={project.images[currentImageIndex]}
               alt={`${project.title} screenshot ${currentImageIndex + 1}`}
-              className="w-full h-full object-cover object-top"
+              className="h-full w-full object-cover object-top"
             />
           )}
-          
+
           {project.images.length > 1 && (
             <>
               <button
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
               >
                 <ArrowLeft size={20} />
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
               >
                 <ArrowRight size={20} />
               </button>
-              
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+
+              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-2">
                 {project.images.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentImageIndex(idx)}
-                    className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                      idx === currentImageIndex ? 'bg-white' : 'bg-white/40'
+                    className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                      idx === currentImageIndex ? "bg-white" : "bg-white/40"
                     }`}
                   ></button>
                 ))}
@@ -90,58 +88,60 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
             </>
           )}
         </div>
-        
+
         <div className="p-6 md:p-8">
-          <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-          
-          <p className="text-muted-foreground mb-6">{project.description}</p>
-          
+          <h3 className="mb-4 text-2xl font-bold">{project.title}</h3>
+
+          <p className="mb-6 text-muted-foreground">{project.description}</p>
+
           <div className="mb-6">
-            <h4 className="text-lg font-semibold mb-3">Technologies Used</h4>
+            <h4 className="mb-3 text-lg font-semibold">Technologies Used</h4>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-3 py-1 bg-secondary text-sm rounded-full"
+                  className="rounded-full bg-secondary px-3 py-1 text-sm"
                 >
                   {tech}
                 </span>
               ))}
             </div>
           </div>
-          
+
           <div className="mb-6">
-            <h4 className="text-lg font-semibold mb-3">Key Features</h4>
-            <ul className="list-disc pl-5 space-y-1">
+            <h4 className="mb-3 text-lg font-semibold">Key Features</h4>
+            <ul className="list-disc space-y-1 pl-5">
               {project.features.map((feature, idx) => (
-                <li key={idx} className="text-muted-foreground">{feature}</li>
+                <li key={idx} className="text-muted-foreground">
+                  {feature}
+                </li>
               ))}
             </ul>
           </div>
-          
+
           <div className="mb-6">
-            <h4 className="text-lg font-semibold mb-3">Challenges</h4>
+            <h4 className="mb-3 text-lg font-semibold">Challenges</h4>
             <p className="text-muted-foreground">{project.challenges}</p>
           </div>
-          
-          <div className="flex flex-wrap gap-4 mt-8">
+
+          <div className="mt-8 flex flex-wrap gap-4">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 bg-[#24292e] text-white rounded-md font-medium hover:bg-[#24292e]/90 transition-colors"
+                className="rounded-md bg-[#24292e] px-6 py-2.5 font-medium text-white transition-colors hover:bg-[#24292e]/90"
               >
                 View on GitHub
               </a>
             )}
-            
+
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition-colors"
+                className="rounded-md bg-primary px-6 py-2.5 font-medium text-white transition-colors hover:bg-primary/90"
               >
                 View Live Demo
               </a>

@@ -52,7 +52,7 @@ const Hero = () => {
         setTimeout(() => setIsDeleting(true), 1500);
       } else if (isDeleting && displayText.length === 0) {
         setIsDeleting(false);
-        setCurrentRole((prev) => (prev + 1) % roles.length);
+        setCurrentRole(prev => (prev + 1) % roles.length);
       }
     }, typingSpeed);
 
@@ -90,15 +90,15 @@ const Hero = () => {
   return (
     <div
       ref={heroRef}
-      className="relative min-h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-background text-foreground pt-24 md:pt-24 pb-10"
+      className="relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden bg-background pb-10 pt-24 text-foreground md:pt-24"
     >
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background z-0"></div>
-      <div className="absolute inset-0 bg-grid-pattern opacity-30 z-0"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/5 via-background to-background"></div>
+      <div className="absolute inset-0 z-0 bg-grid-pattern opacity-30"></div>
 
       {/* Animated Floating Elements */}
       <div
-        className="parallax absolute top-1/4 left-1/4 text-primary/30 will-change-transform"
+        className="parallax absolute left-1/4 top-1/4 text-primary/30 will-change-transform"
         data-speed="1"
       >
         <Database
@@ -118,7 +118,7 @@ const Hero = () => {
         />
       </div>
       <div
-        className="parallax absolute top-1/3 right-1/3 text-primary/30 will-change-transform"
+        className="parallax absolute right-1/3 top-1/3 text-primary/30 will-change-transform"
         data-speed="2"
       >
         <Code
@@ -129,21 +129,21 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 lg:px-8 z-10">
+      <div className="container z-10 mx-auto px-6 lg:px-8">
         {/* Personal Info Card */}
-        <div className="max-w-4xl mx-auto">
+        <div className="mx-auto max-w-4xl">
           {/* Header with Avatar and Basic Info */}
-          <div className="text-center mb-12">
+          <div className="mb-12 text-center">
             <div
               className="animate-slide-down"
               style={{ animationDelay: "200ms" }}
             >
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary to-accent p-1">
-                <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
+              <div className="mx-auto mb-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary to-accent p-1">
+                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-background">
                   <img
                     src="/me.webp"
                     alt="Rizal Saifulloh Fatah"
-                    className="w-full h-full object-cover rounded-full"
+                    className="h-full w-full rounded-full object-cover"
                   />
                 </div>
               </div>
@@ -153,13 +153,13 @@ const Hero = () => {
               className="animate-slide-down"
               style={{ animationDelay: "300ms" }}
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              <h1 className="mb-4 text-4xl font-bold md:text-6xl">
                 Rizal Saifulloh Fatah
               </h1>
-              <div className="flex items-center justify-center gap-2 text-muted-foreground mb-4">
+              <div className="mb-4 flex items-center justify-center gap-2 text-muted-foreground">
                 <MapPin size={16} />
                 <span>Sukoharjo, Indonesia</span>
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse ml-2"></span>
+                <span className="ml-2 h-2 w-2 animate-pulse rounded-full bg-green-500"></span>
                 <span className="text-green-500">Available for work</span>
               </div>
             </div>
@@ -168,8 +168,8 @@ const Hero = () => {
               className="animate-slide-down"
               style={{ animationDelay: "400ms" }}
             >
-              <div className="text-2xl md:text-3xl font-semibold mb-6 h-12 flex items-center justify-center">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              <div className="mb-6 flex h-12 items-center justify-center text-2xl font-semibold md:text-3xl">
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   {displayText}
                   <span className="animate-pulse">|</span>
                 </span>
@@ -177,7 +177,7 @@ const Hero = () => {
             </div>
 
             <p
-              className="max-w-2xl mx-auto text-lg text-muted-foreground mb-8 animate-slide-down"
+              className="mx-auto mb-8 max-w-2xl animate-slide-down text-lg text-muted-foreground"
               style={{ animationDelay: "500ms" }}
             >
               IT Manager and Full-Stack Developer with 6+ years of experience in
@@ -190,7 +190,7 @@ const Hero = () => {
 
           {/* Stats Grid */}
           <div
-            className="flex flex-wrap justify-center gap-6 mb-12 animate-slide-down"
+            className="mb-12 flex animate-slide-down flex-wrap justify-center gap-6"
             style={{ animationDelay: "600ms" }}
           >
             {stats.map((stat, index) => {
@@ -198,10 +198,10 @@ const Hero = () => {
               return (
                 <div
                   key={index}
-                  className="text-center p-6 rounded-lg bg-card/50 backdrop-blur-sm border border-border hover:bg-card/70 transition-all duration-300 hover:scale-105 flex-1 min-w-[150px] max-w-[300px]"
+                  className="min-w-[150px] max-w-[300px] flex-1 rounded-lg border border-border bg-card/50 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-card/70"
                 >
-                  <Icon className="w-8 h-8 mx-auto mb-3 text-primary" />
-                  <div className="text-2xl font-bold text-foreground mb-1">
+                  <Icon className="mx-auto mb-3 h-8 w-8 text-primary" />
+                  <div className="mb-1 text-2xl font-bold text-foreground">
                     {stat.value.toLocaleString()}
                   </div>
                   <div className="text-sm text-muted-foreground">
@@ -214,64 +214,64 @@ const Hero = () => {
 
           {/* Action Buttons */}
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-8 animate-slide-down"
+            className="mb-8 flex animate-slide-down flex-col items-center justify-center gap-8 sm:flex-row"
             style={{ animationDelay: "700ms" }}
           >
-            <div className="relative group">
+            <div className="group relative">
               <button
                 onClick={() => {
                   document
                     .getElementById("contact")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="relative px-8 py-4 bg-yellow-400 text-black font-black text-lg border-4 border-gray-900 dark:border-white transition-all duration-200 transform hover:translate-x-[-4px] hover:translate-y-[-4px] active:translate-x-0 active:translate-y-0 flex items-center gap-3 uppercase tracking-wide"
+                className="relative flex transform items-center gap-3 border-4 border-gray-900 bg-yellow-400 px-8 py-4 text-lg font-black uppercase tracking-wide text-black transition-all duration-200 hover:translate-x-[-4px] hover:translate-y-[-4px] active:translate-x-0 active:translate-y-0 dark:border-white"
               >
                 <Mail size={20} className="font-bold" />
                 Get in Touch
               </button>
-              <div className="absolute top-1 left-1 w-full h-full bg-gray-900 dark:bg-white -z-10"></div>
-              <div className="absolute -bottom-2 left-0 w-0 h-1 bg-red-500 group-hover:w-full transition-all duration-300 ease-out"></div>
+              <div className="absolute left-1 top-1 -z-10 h-full w-full bg-gray-900 dark:bg-white"></div>
+              <div className="absolute -bottom-2 left-0 h-1 w-0 bg-red-500 transition-all duration-300 ease-out group-hover:w-full"></div>
             </div>
 
-            <div className="relative group">
+            <div className="group relative">
               <button
                 onClick={() => {
                   document
                     .getElementById("projects")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="relative px-8 py-4 bg-cyan-400 text-black font-black text-lg border-4 border-gray-900 dark:border-white transition-all duration-200 transform hover:translate-x-[-4px] hover:translate-y-[-4px] active:translate-x-0 active:translate-y-0 flex items-center gap-3 uppercase tracking-wide"
+                className="relative flex transform items-center gap-3 border-4 border-gray-900 bg-cyan-400 px-8 py-4 text-lg font-black uppercase tracking-wide text-black transition-all duration-200 hover:translate-x-[-4px] hover:translate-y-[-4px] active:translate-x-0 active:translate-y-0 dark:border-white"
               >
                 <Code size={20} className="font-bold" />
                 View Projects
               </button>
-              <div className="absolute top-1 left-1 w-full h-full bg-gray-900 dark:bg-white -z-10"></div>
-              <div className="absolute -bottom-2 left-0 w-0 h-1 bg-fuchsia-500 group-hover:w-full transition-all duration-300 ease-out"></div>
+              <div className="absolute left-1 top-1 -z-10 h-full w-full bg-gray-900 dark:bg-white"></div>
+              <div className="absolute -bottom-2 left-0 h-1 w-0 bg-fuchsia-500 transition-all duration-300 ease-out group-hover:w-full"></div>
             </div>
           </div>
 
           {/* Social Links */}
           <div
-            className="flex items-center justify-center gap-6 animate-slide-down"
+            className="flex animate-slide-down items-center justify-center gap-6"
             style={{ animationDelay: "800ms" }}
           >
             <a
               href="https://github.com/rizalfatah"
-              className="p-3 rounded-full bg-card/50 hover:bg-card/70 border border-border transition-all duration-300 hover:scale-110 group"
+              className="group rounded-full border border-border bg-card/50 p-3 transition-all duration-300 hover:scale-110 hover:bg-card/70"
             >
-              <Github className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+              <Github className="h-5 w-5 text-muted-foreground group-hover:text-foreground" />
             </a>
             <a
               href="https://www.linkedin.com/in/rizal-saifulloh-fatah-306414154/"
-              className="p-3 rounded-full bg-card/50 hover:bg-card/70 border border-border transition-all duration-300 hover:scale-110 group"
+              className="group rounded-full border border-border bg-card/50 p-3 transition-all duration-300 hover:scale-110 hover:bg-card/70"
             >
-              <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+              <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-foreground" />
             </a>
             <a
               href="mailto:rizal.fatah.rsf@gmail.com"
-              className="p-3 rounded-full bg-card/50 hover:bg-card/70 border border-border transition-all duration-300 hover:scale-110 group"
+              className="group rounded-full border border-border bg-card/50 p-3 transition-all duration-300 hover:scale-110 hover:bg-card/70"
             >
-              <Mail className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+              <Mail className="h-5 w-5 text-muted-foreground group-hover:text-foreground" />
             </a>
           </div>
         </div>

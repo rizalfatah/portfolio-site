@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Send, Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
+import React, { useState } from "react";
+import { Send, Mail, Phone, MapPin, CheckCircle } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -17,30 +17,32 @@ const Contact = () => {
     const newErrors: { [key: string]: string } = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
 
     // Clear error when user starts typing
     if (errors[name]) {
-      setErrors((prev) => {
+      setErrors(prev => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -64,62 +66,75 @@ const Contact = () => {
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
         });
       }, 5000);
     }, 1500);
   };
 
   return (
-    <section id="contact" className="py-20 bg-secondary/30">
+    <section id="contact" className="bg-secondary/30 py-20">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16 reveal opacity-0">
+        <div className="reveal mb-16 text-center opacity-0">
           <h2 className="section-title">Get in Touch</h2>
           <p className="section-subtitle mx-auto">
-            Have a project in mind or want to discuss a potential collaboration? Let's talk!
+            Have a project in mind or want to discuss a potential collaboration?
+            Let's talk!
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-10 lg:grid-cols-2">
           {/* Contact Info */}
           <div className="reveal opacity-0">
-            <div className="bg-card p-8 rounded-lg shadow-card border border-border">
-              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+            <div className="rounded-lg border border-border bg-card p-8 shadow-card">
+              <h3 className="mb-6 text-2xl font-bold">Contact Information</h3>
 
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Mail size={20} />
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-sm font-medium text-muted-foreground">Email</h4>
-                    <a href="mailto:rizal.fatah.rsf@gmail.com" className="text-lg font-medium hover:text-primary transition-colors">
+                    <h4 className="text-sm font-medium text-muted-foreground">
+                      Email
+                    </h4>
+                    <a
+                      href="mailto:rizal.fatah.rsf@gmail.com"
+                      className="text-lg font-medium transition-colors hover:text-primary"
+                    >
                       rizal.fatah.rsf@gmail.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Phone size={20} />
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-sm font-medium text-muted-foreground">Phone</h4>
-                    <a href="tel:+1234567890" className="text-lg font-medium hover:text-primary transition-colors">
+                    <h4 className="text-sm font-medium text-muted-foreground">
+                      Phone
+                    </h4>
+                    <a
+                      href="tel:+1234567890"
+                      className="text-lg font-medium transition-colors hover:text-primary"
+                    >
                       +62 8954 0164 2995
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <MapPin size={20} />
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-sm font-medium text-muted-foreground">Location</h4>
+                    <h4 className="text-sm font-medium text-muted-foreground">
+                      Location
+                    </h4>
                     <p className="text-lg font-medium">
                       Sukoharjo, Central Java
                     </p>
@@ -127,39 +142,44 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="mt-12 p-6 bg-primary/5 rounded-lg border border-primary/10">
-                <div className="flex items-center gap-2 mb-2">
+              <div className="mt-12 rounded-lg border border-primary/10 bg-primary/5 p-6">
+                <div className="mb-2 flex items-center gap-2">
                   <h4 className="text-lg font-semibold">Availability</h4>
                 </div>
                 <p className="text-muted-foreground">
                   Currently
-                  <div className="mx-1 inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="mr-1 text-green-500 font-medium">Available</span>
-                  
-                  for freelance projects and consulting.
-                  I typically respond to all inquiries within 24 hours.
+                  <div className="mx-1 inline-block h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
+                  <span className="mr-1 font-medium text-green-500">
+                    Available
+                  </span>
+                  for freelance projects and consulting. I typically respond to
+                  all inquiries within 24 hours.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="reveal opacity-0 animate-delay-200">
-            <div className="bg-card p-8 rounded-lg shadow-card border border-border relative overflow-hidden">
+          <div className="reveal animate-delay-200 opacity-0">
+            <div className="relative overflow-hidden rounded-lg border border-border bg-card p-8 shadow-card">
               {isSubmitted ? (
-                <div className="flex flex-col items-center justify-center h-full py-12 animate-scale-in">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                <div className="flex h-full animate-scale-in flex-col items-center justify-center py-12">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <CheckCircle size={32} />
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                  <p className="text-muted-foreground text-center mb-6">
-                    Thank you for reaching out. I'll get back to you as soon as possible.
+                  <h3 className="mb-2 text-2xl font-bold">Message Sent!</h3>
+                  <p className="mb-6 text-center text-muted-foreground">
+                    Thank you for reaching out. I'll get back to you as soon as
+                    possible.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-1">
+                    <label
+                      htmlFor="name"
+                      className="mb-1 block text-sm font-medium"
+                    >
                       Your Name
                     </label>
                     <input
@@ -168,8 +188,9 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-md border ${errors.name ? 'border-red-500' : 'border-border'
-                        } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
+                      className={`w-full rounded-md border px-4 py-3 ${
+                        errors.name ? "border-red-500" : "border-border"
+                      } bg-background transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary`}
                       placeholder="Si Fulan"
                     />
                     {errors.name && (
@@ -178,7 +199,10 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-1">
+                    <label
+                      htmlFor="email"
+                      className="mb-1 block text-sm font-medium"
+                    >
                       Your Email
                     </label>
                     <input
@@ -187,18 +211,25 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-md border ${errors.email ? 'border-red-500' : 'border-border'
-                        } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
+                      className={`w-full rounded-md border px-4 py-3 ${
+                        errors.email ? "border-red-500" : "border-border"
+                      } bg-background transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary`}
                       placeholder="fulan@gmail.com"
                     />
                     {errors.email && (
-                      <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                      <p className="mt-1 text-sm text-red-500">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-1">
-                      Subject <span className="text-muted-foreground">(Optional)</span>
+                    <label
+                      htmlFor="subject"
+                      className="mb-1 block text-sm font-medium"
+                    >
+                      Subject{" "}
+                      <span className="text-muted-foreground">(Optional)</span>
                     </label>
                     <input
                       type="text"
@@ -206,13 +237,16 @@ const Contact = () => {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200"
+                      className="w-full rounded-md border border-border bg-background px-4 py-3 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="Project Inquiry"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-1">
+                    <label
+                      htmlFor="message"
+                      className="mb-1 block text-sm font-medium"
+                    >
                       Your Message
                     </label>
                     <textarea
@@ -221,26 +255,46 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className={`w-full px-4 py-3 rounded-md border ${errors.message ? 'border-red-500' : 'border-border'
-                        } bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200`}
+                      className={`w-full rounded-md border px-4 py-3 ${
+                        errors.message ? "border-red-500" : "border-border"
+                      } bg-background transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary`}
                       placeholder="Hello, I'd like to discuss a project..."
                     ></textarea>
                     {errors.message && (
-                      <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+                      <p className="mt-1 text-sm text-red-500">
+                        {errors.message}
+                      </p>
                     )}
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full flex items-center justify-center px-6 py-3 rounded-md text-white font-medium bg-primary transition-all duration-300 ${isSubmitting ? 'opacity-80' : 'hover:bg-primary/90'
-                      }`}
+                    className={`flex w-full items-center justify-center rounded-md bg-primary px-6 py-3 font-medium text-white transition-all duration-300 ${
+                      isSubmitting ? "opacity-80" : "hover:bg-primary/90"
+                    }`}
                   >
                     {isSubmitting ? (
                       <>
-                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <svg
+                          className="-ml-1 mr-2 h-4 w-4 animate-spin text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
                         </svg>
                         Sending...
                       </>
@@ -255,8 +309,8 @@ const Contact = () => {
               )}
 
               {/* Background elements */}
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full"></div>
-              <div className="absolute -top-5 -left-5 w-20 h-20 bg-primary/5 rounded-full"></div>
+              <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-primary/5"></div>
+              <div className="absolute -left-5 -top-5 h-20 w-20 rounded-full bg-primary/5"></div>
             </div>
           </div>
         </div>

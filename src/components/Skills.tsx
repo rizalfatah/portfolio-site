@@ -26,22 +26,22 @@ import { BsBox } from "react-icons/bs";
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-secondary/30">
+    <section id="skills" className="bg-secondary/30 py-20">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16 reveal opacity-0">
+        <div className="reveal mb-16 text-center opacity-0">
           <h2 className="section-title">Skills & Technologies</h2>
           <p className="section-subtitle mx-auto">
             Technologies and tools I use to build robust, scalable solutions
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="mx-auto max-w-6xl">
           {/* Frontend Technologies */}
-          <div className="mb-12 reveal opacity-0">
-            <h3 className="text-xl font-semibold mb-6 text-center">
+          <div className="reveal mb-12 opacity-0">
+            <h3 className="mb-6 text-center text-xl font-semibold">
               Frontend Development
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 ">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
               {[
                 {
                   name: "HTML5",
@@ -63,10 +63,10 @@ const Skills = () => {
               ].map((tech, index) => (
                 <div
                   key={tech.name}
-                  className="bg-card p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 hover:scale-105 flex flex-col items-center"
+                  className="flex flex-col items-center rounded-lg bg-card p-4 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="text-3xl mb-2">{tech.icon}</div>
+                  <div className="mb-2 text-3xl">{tech.icon}</div>
                   <div className="text-sm font-medium">{tech.name}</div>
                 </div>
               ))}
@@ -74,11 +74,11 @@ const Skills = () => {
           </div>
 
           {/* Backend Technologies */}
-          <div className="mb-12 reveal opacity-0">
-            <h3 className="text-xl font-semibold mb-6 text-center">
+          <div className="reveal mb-12 opacity-0">
+            <h3 className="mb-6 text-center text-xl font-semibold">
               Backend Development
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-6">
               {[
                 { name: "PHP", icon: <FaPhp className="text-purple-500" /> },
                 {
@@ -101,10 +101,10 @@ const Skills = () => {
               ].map((tech, index) => (
                 <div
                   key={tech.name}
-                  className="bg-card p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 hover:scale-105 flex flex-col items-center"
+                  className="flex flex-col items-center rounded-lg bg-card p-4 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="text-3xl mb-2">{tech.icon}</div>
+                  <div className="mb-2 text-3xl">{tech.icon}</div>
                   <div className="text-sm font-medium">{tech.name}</div>
                 </div>
               ))}
@@ -112,11 +112,11 @@ const Skills = () => {
           </div>
 
           {/* Infrastructure & DevOps */}
-          <div className="mb-12 reveal opacity-0">
-            <h3 className="text-xl font-semibold mb-6 text-center">
+          <div className="reveal mb-12 opacity-0">
+            <h3 className="mb-6 text-center text-xl font-semibold">
               Infrastructure & DevOps
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-6">
               {[
                 {
                   name: "Docker",
@@ -144,10 +144,10 @@ const Skills = () => {
               ].map((tech, index) => (
                 <div
                   key={tech.name}
-                  className="bg-card p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 hover:scale-105 flex flex-col items-center"
+                  className="flex flex-col items-center rounded-lg bg-card p-4 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="text-3xl mb-2">{tech.icon}</div>
+                  <div className="mb-2 text-3xl">{tech.icon}</div>
                   <div className="text-sm font-medium">{tech.name}</div>
                 </div>
               ))}

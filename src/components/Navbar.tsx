@@ -70,32 +70,32 @@ const Navbar = () => {
   const textColorClass = isScrolled
     ? "text-foreground"
     : isDark
-    ? "text-white"
-    : "text-foreground";
+      ? "text-white"
+      : "text-foreground";
   const textHoverClass = isScrolled
     ? "hover:text-primary hover:drop-shadow-sm"
     : isDark
-    ? "hover:text-primary/90 hover:drop-shadow-glow"
-    : "hover:text-primary hover:drop-shadow-sm";
+      ? "hover:text-primary/90 hover:drop-shadow-glow"
+      : "hover:text-primary hover:drop-shadow-sm";
   const logoTextColorClass = isScrolled
     ? "text-foreground"
     : isDark
-    ? "text-white"
-    : "text-foreground";
+      ? "text-white"
+      : "text-foreground";
   // Add text shadow class for better visibility - only on dark backgrounds
   const textShadowClass = isScrolled
     ? ""
     : isDark
-    ? "text-shadow drop-shadow-sm"
-    : "";
+      ? "text-shadow drop-shadow-sm"
+      : "";
 
   return (
     <nav
       ref={navbarRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-in-out ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border/50 shadow-lg py-4"
-          : "bg-gradient-to-b from-background/10 via-background/5 to-transparent backdrop-blur-sm py-6"
+          ? "border-b border-border/50 bg-background/80 py-4 shadow-lg backdrop-blur-md"
+          : "bg-gradient-to-b from-background/10 via-background/5 to-transparent py-6 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-6 lg:px-8">
@@ -104,7 +104,7 @@ const Navbar = () => {
             <a
               href="#"
               className={`text-xl font-bold ${logoTextColorClass} ${textShadowClass} flex items-center transition-all duration-300 hover:scale-105`}
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
@@ -114,8 +114,8 @@ const Navbar = () => {
                   isScrolled
                     ? "text-primary"
                     : isDark
-                    ? "text-accent drop-shadow-glow"
-                    : "text-primary"
+                      ? "drop-shadow-glow text-accent"
+                      : "text-primary"
                 }`}
               >
                 &lt;
@@ -126,8 +126,8 @@ const Navbar = () => {
                   isScrolled
                     ? "text-primary"
                     : isDark
-                    ? "text-accent drop-shadow-glow"
-                    : "text-primary"
+                      ? "drop-shadow-glow text-accent"
+                      : "text-primary"
                 }`}
               >
                 /&gt;
@@ -136,14 +136,14 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {["projects", "experience", "contact"].map((item) => (
+          <div className="hidden items-center space-x-8 md:flex">
+            {["projects", "experience", "contact"].map(item => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
                 className={`${textColorClass} ${
                   !isScrolled && "font-medium"
-                } ${textShadowClass} ${textHoverClass} transition-colors duration-200 link-underline capitalize`}
+                } ${textShadowClass} ${textHoverClass} link-underline capitalize transition-colors duration-200`}
               >
                 {item}
               </button>
@@ -152,10 +152,10 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="flex items-center space-x-4 md:hidden">
             <ThemeToggle className={textColorClass} />
             <button
-              className={`${textColorClass} ${textShadowClass} focus:outline-none transition-colors duration-200`}
+              className={`${textColorClass} ${textShadowClass} transition-colors duration-200 focus:outline-none`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -169,7 +169,7 @@ const Navbar = () => {
         <div
           className={`fixed inset-x-0 bottom-0 z-40 transform transition-all duration-300 ease-in-out ${
             mobileMenuOpen ? "translate-y-0" : "translate-y-full"
-          } bg-gradient-to-b from-background/95 via-background/90 to-background/95 backdrop-blur-xl border-t border-border/30`}
+          } border-t border-border/30 bg-gradient-to-b from-background/95 via-background/90 to-background/95 backdrop-blur-xl`}
           style={{
             top: navbarRef.current
               ? navbarRef.current.clientHeight + "px"
@@ -179,12 +179,12 @@ const Navbar = () => {
             }px)`,
           }}
         >
-          <div className="flex flex-col items-center justify-center h-full space-y-8 p-4">
+          <div className="flex h-full flex-col items-center justify-center space-y-8 p-4">
             {["projects", "experience", "contact"].map((item, index) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="text-foreground hover:text-primary text-2xl font-medium transition-all duration-300 capitalize transform hover:scale-110 hover:drop-shadow-glow"
+                className="hover:drop-shadow-glow transform text-2xl font-medium capitalize text-foreground transition-all duration-300 hover:scale-110 hover:text-primary"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 {item}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -75,7 +75,9 @@
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 
   ::-webkit-scrollbar {
@@ -88,7 +90,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-muted rounded-full;
+    @apply rounded-full bg-muted;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -98,24 +100,24 @@
 
 @layer components {
   .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-glass;
+    @apply border border-white/20 bg-white/70 shadow-glass backdrop-blur-md;
   }
 
   .glass-dark {
-    @apply bg-black/70 backdrop-blur-md border border-white/10 shadow-glass;
+    @apply border border-white/10 bg-black/70 shadow-glass backdrop-blur-md;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-bold relative inline-block;
+    @apply relative inline-block text-3xl font-bold md:text-4xl;
   }
 
   .section-title::after {
-    content: '';
-    @apply absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full;
+    content: "";
+    @apply absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-primary;
   }
 
   .section-subtitle {
-    @apply text-lg text-muted-foreground mt-4 mb-8 max-w-2xl;
+    @apply mb-8 mt-4 max-w-2xl text-lg text-muted-foreground;
   }
 
   .link-underline {
@@ -138,27 +140,40 @@
 
   /* Enhanced glass effect for navbar */
   .navbar-glass {
-    background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0.05) 50%,
-        rgba(255, 255, 255, 0.02) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .dark .navbar-glass {
-    background: linear-gradient(135deg,
-        rgba(0, 0, 0, 0.1) 0%,
-        rgba(0, 0, 0, 0.05) 50%,
-        rgba(0, 0, 0, 0.02) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.05) 50%,
+      rgba(0, 0, 0, 0.02) 100%
+    );
     border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   /* Background grid pattern */
   .bg-grid-primary {
-    background-image: linear-gradient(to right, theme('colors.primary.DEFAULT / 10%') 1px, transparent 1px),
-      linear-gradient(to bottom, theme('colors.primary.DEFAULT / 10%') 1px, transparent 1px);
+    background-image:
+      linear-gradient(
+        to right,
+        theme("colors.primary.DEFAULT / 10%") 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        theme("colors.primary.DEFAULT / 10%") 1px,
+        transparent 1px
+      );
     background-size: 20px 20px;
   }
 
@@ -224,11 +239,11 @@ html {
   background-position: center;
 }
 
-.blur-load.loaded>img {
+.blur-load.loaded > img {
   opacity: 1;
 }
 
-.blur-load>img {
+.blur-load > img {
   opacity: 0;
   transition: opacity 200ms ease-in-out;
 }

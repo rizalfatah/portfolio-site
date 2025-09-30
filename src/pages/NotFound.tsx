@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -14,7 +13,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
       <div className="w-full max-w-md text-center">
         <div className="text-9xl font-bold text-primary">404</div>
         <h1 className="mt-6 text-2xl font-bold">Page Not Found</h1>
@@ -23,7 +22,7 @@ const NotFound = () => {
         </p>
         <a
           href="/"
-          className="mt-8 inline-flex items-center px-6 py-3 rounded-md bg-primary text-white hover:bg-primary/90 transition-colors"
+          className="mt-8 inline-flex items-center rounded-md bg-primary px-6 py-3 text-white transition-colors hover:bg-primary/90"
         >
           <ArrowLeft size={18} className="mr-2" />
           Back to Home
