@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import {
   ArrowDown,
@@ -50,45 +52,16 @@ const Hero = () => {
     let frame = 0;
     const maxFrames = 30; // Number of iterations before fully revealing
 
-    const timer = setInterval(() => {
-      if (frame < maxFrames) {
-        // Generate random characters for unrevealed positions
-        const revealedLength = Math.floor(
-          (frame / maxFrames) * currentText.length
-        );
-        const revealed = currentText.slice(0, revealedLength);
-        const randomPart = Array.from(
-          { length: currentText.length - revealedLength },
-          () => getRandomChar()
-        ).join("");
-
-        setDisplayText(revealed + randomPart);
-        frame++;
-      } else if (frame === maxFrames) {
-        // Fully revealed, show the actual text
-        setDisplayText(currentText);
-        frame++;
-      } else if (frame < maxFrames + 20) {
-        // Hold the revealed text for a moment
-        frame++;
-      } else {
-        // Start scrambling out
-        const scrambleFrames = frame - (maxFrames + 20);
-        if (scrambleFrames < 15) {
-          const scrambledLength =
-            currentText.length -
-            Math.floor((scrambleFrames / 15) * currentText.length);
-          const scrambled = Array.from({ length: scrambledLength }, () =>
-            getRandomChar()
-          ).join("");
-          setDisplayText(scrambled);
-          frame++;
-        } else {
-          // Move to next role
-          clearInterval(timer);
-          setCurrentRole(prev => (prev + 1) % roles.length);
-          frame = 0;
-        }
+    const timer = setTimeout(() => {
+      if (!isDeleting && displayText.length < currentText.length) {
+        setDisplayText(currentText.slice(0, displayText.length + 1));
+      } else if (isDeleting && displayText.length > 0) {
+        setDisplayText(currentText.slice(0, displayText.length - 1));
+      } else if (!isDeleting && displayText.length === currentText.length) {
+        setTimeout(() => setIsDeleting(true), 1500);
+      } else if (isDeleting && displayText.length === 0) {
+        setIsDeleting(false);
+        setCurrentRole(prev => (prev + 1) % roles.length);
       }
     }, 50); // Animation speed
 
@@ -205,7 +178,7 @@ const Hero = () => {
               style={{ animationDelay: "400ms" }}
             >
               <div className="mb-6 flex h-12 items-center justify-center text-2xl font-semibold md:text-3xl">
-                <span className="text-primary">
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   {displayText}
                   <span className="animate-pulse">|</span>
                 </span>

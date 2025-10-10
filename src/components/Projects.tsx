@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Eye, Github, ExternalLink, X } from "lucide-react";
 import ProjectDetail from "./ProjectDetail";

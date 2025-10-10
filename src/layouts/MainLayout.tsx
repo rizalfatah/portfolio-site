@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ReactNode, useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,13 +18,17 @@ const MainLayout = ({
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
 
     // Add intersection observer for animation on scroll
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in");
+            entry.target.classList.add("revealed");
             observer.unobserve(entry.target);
           }
         });
@@ -34,16 +40,18 @@ const MainLayout = ({
       }
     );
 
-    document.querySelectorAll(".reveal").forEach(el => {
-      observer.observe(el);
-    });
+    // Small delay to ensure DOM is ready
+    const timeoutId = setTimeout(() => {
+      document.querySelectorAll(".reveal").forEach(el => {
+        observer.observe(el);
+      });
+    }, 100);
 
     return () => {
-      document.querySelectorAll(".reveal").forEach(el => {
-        observer.unobserve(el);
-      });
+      clearTimeout(timeoutId);
+      observer.disconnect();
     };
-  }, []);
+  }, [mounted]);
 
   if (!mounted) return null;
 

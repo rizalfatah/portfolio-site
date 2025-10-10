@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import reveal animation styles */
+@import "./styles/reveal.css";
+
 @layer base {
   :root {
     --background: 0 0% 100%;
