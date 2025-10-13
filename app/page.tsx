@@ -1,5 +1,5 @@
 "use client";
-import MainLayout from "@/layouts/MainLayout";
+import MainLayout from "@/components/layouts/MainLayout";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";

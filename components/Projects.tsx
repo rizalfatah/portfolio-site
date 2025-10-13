@@ -207,7 +207,7 @@ const Projects = () => {
   }, [filteredProjects]);
 
   return (
-    <section id="projects" className="bg-secondary/30 py-20">
+    <section id="projects" className="scroll-mt-20 bg-secondary/30 py-20">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="reveal mb-16 text-center opacity-0">
           <h2 className="section-title">Projects</h2>

@@ -133,7 +133,7 @@ const timelineItems: TimelineItem[] = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20">
+    <section id="experience" className="scroll-mt-20 py-20">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="reveal mb-16 text-center opacity-0">
           <h2 className="section-title">Experience & Education</h2>

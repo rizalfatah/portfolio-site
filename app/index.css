@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 /* Import reveal animation styles */
-@import "./styles/reveal.css";
+@import "../styles/reveal.css";
 
 @layer base {
   :root {
