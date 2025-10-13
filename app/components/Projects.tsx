@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Eye, Github, ExternalLink, X } from "lucide-react";
 import ProjectDetail from "./ProjectDetail";
 
@@ -172,6 +172,39 @@ const Projects = () => {
     selectedCategory === "all"
       ? projects
       : projects.filter(project => project.category === selectedCategory);
+
+  // Re-setup reveal animations when filtered projects change
+  useEffect(() => {
+    const projectCards = document.querySelectorAll("#projects .reveal");
+
+    const revealOnScroll = (
+      entries: IntersectionObserverEntry[],
+      observer: IntersectionObserver
+    ) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(revealOnScroll, {
+      root: null,
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px",
+    });
+
+    projectCards.forEach(element => {
+      // Remove the revealed class first to reset the animation
+      element.classList.remove("revealed");
+      observer.observe(element);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [filteredProjects]);
 
   return (
     <section id="projects" className="bg-secondary/30 py-20">
