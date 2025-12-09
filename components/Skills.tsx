@@ -20,6 +20,7 @@ import {
   SiProxmox,
   SiZotero,
   SiSynology,
+  SiMikrotik,
 } from "react-icons/si";
 import { MdStorage, MdSmartToy } from "react-icons/md";
 import { BsBox } from "react-icons/bs";
@@ -122,7 +123,10 @@ const Skills = () => {
                   name: "Docker",
                   icon: <FaDocker className="text-blue-500" />,
                 },
-                { name: "LXC", icon: <BsBox className="text-orange-500" /> },
+                {
+                  name: "LXC",
+                  icon: <BsBox className="text-orange-500" />
+                },
                 {
                   name: "Proxmox",
                   icon: <SiProxmox className="text-orange-600" />,
@@ -131,10 +135,16 @@ const Skills = () => {
                   name: "Linux",
                   icon: <FaLinux className="text-yellow-500" />,
                 },
-                { name: "Zabbix", icon: <SiZotero className="text-red-600" /> },
                 {
                   name: "Synology NAS",
                   icon: <SiSynology className="text-blue-600" />,
+                },
+                { name: "Zabbix",
+                  icon: <SiZotero className="text-red-600" />
+                },
+                {
+                  name: "Mikrotik",
+                  icon: <SiMikrotik className="text-[#293138]" />,
                 },
                 { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
                 {
