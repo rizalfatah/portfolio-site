@@ -43,7 +43,7 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-sm">
       <div className="absolute inset-0 z-0" onClick={onClose}></div>
 
-      <div className="relative z-10 w-full max-w-4xl animate-scale-in overflow-hidden rounded-lg bg-card shadow-lg">
+      <div className="relative z-10 w-full max-w-4xl animate-scale-in overflow-hidden rounded-lg bg-card shadow-lg top-20">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-20 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
