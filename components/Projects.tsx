@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Eye, Github, ExternalLink, X } from "lucide-react";
+import { Eye, Github, ExternalLink, User, Users } from "lucide-react";
 import ProjectDetail from "./ProjectDetail";
+import ImageCarousel from "./ImageCarousel";
 
 export interface Project {
   id: number;
@@ -15,6 +16,7 @@ export interface Project {
   features: string[];
   challenges: string;
   category: "backend" | "fullstack" | "infrastructure";
+  teamType: "individual" | "team";
 }
 
 const projects: Project[] = [
@@ -24,28 +26,31 @@ const projects: Project[] = [
     description:
       "Smart parking management system that significantly increased operational efficiency and reduced labor costs through automation and real-time monitoring.",
     technologies: [
-      "Laravel",
-      "PHP",
+      "Node.Js",
+      "ExpressJs",
+      "Prisma",
       "MariaDB",
-      "Docker",
       "React.js",
-      "Node.js",
-      "Zabbix",
+      "Arduino",
     ],
     images: [
-      "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/moc_park/app1.webp",
+      "/moc_park/ticket.webp",
+      "/moc_park/app2.webp",
+      "/moc_park/app3.webp",
+      "/moc_park/login1.webp",
+      "/moc_park/login2.webp",
+      "/moc_park/scan.webp",
     ],
-    githubUrl: "https://github.com",
     features: [
-      "Real-time vehicle detection",
-      "Automated billing system",
       "Occupancy monitoring",
       "Revenue analytics",
-      "Mobile notifications",
+      "Centralized payment at cashier",
     ],
     challenges:
       "Integrating hardware sensors with software systems while ensuring 99.9% uptime and accurate billing was the main challenge.",
     category: "fullstack",
+    teamType: "individual",
   },
   {
     id: 2,
@@ -53,18 +58,16 @@ const projects: Project[] = [
     description:
       "On-premise server infrastructure built with containerization technologies, saving significant costs on external cloud subscriptions.",
     technologies: [
-      "Docker",
-      "LXC",
       "Proxmox",
-      "Synology NAS",
+      "LXC",
+      "Docker",
       "Zabbix",
-      "MariaDB",
       "Linux",
+      "Synology NAS",
     ],
     images: [
       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
-    githubUrl: "https://github.com",
     features: [
       "Container orchestration",
       "Automated backups",
@@ -75,38 +78,48 @@ const projects: Project[] = [
     challenges:
       "Designing a scalable container architecture that could handle varying workloads while maintaining data integrity and security.",
     category: "infrastructure",
+    teamType: "individual",
   },
   {
     id: 3,
-    title: "Billing & Financial Reporting System",
+    title: "Supervoucher",
     description:
-      "Comprehensive billing and financial reporting system developed during pandemic to improve efficiency and increase sales revenue.",
-    technologies: [
-      "Laravel",
-      "PHP",
-      "MariaDB",
-      "React.js",
-      "Chart.js",
-      "Docker",
-      "Git",
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    ],
-    githubUrl: "https://github.com",
+      "Voucher management system for Mikrotik hotspot that generates internet access vouchers, including meeting room vouchers delivered automatically via WhatsApp gateway.",
+    technologies: ["PHP", "Laravel", "Mikrotik", "WhatsApp Gateway"],
+    images: ["/supervoucher/app1.webp", "/supervoucher/app2.webp"],
     features: [
-      "Automated invoicing",
-      "Financial analytics",
-      "Multi-outlet support",
-      "Real-time reporting",
-      "Payment tracking",
+      "Mikrotik hotspot voucher generation",
+      "Meeting room voucher management",
+      "Automatic voucher delivery via WhatsApp",
+      "Voucher usage and expiry control",
     ],
     challenges:
-      "Creating a flexible billing system that could adapt to different business models while ensuring accurate financial calculations.",
+      "Integrating Laravel with Mikrotik API and WhatsApp gateway while ensuring reliable voucher generation and delivery for meeting room users.",
     category: "fullstack",
+    teamType: "individual",
   },
+
   {
     id: 4,
+    title: "Filosgy",
+    description:
+      "Log management system for Synology Samba that provides log monitoring and directory/file listing capabilities across the Samba network.",
+    technologies: ["Python", "Streamlit", "Flask"],
+    images: ["/filosgy/app1.webp", "/filosgy/app2.webp", "/filosgy/app3.webp"],
+    features: [
+      "Synology Samba log management",
+      "Directory listing in Samba network",
+      "File listing and browsing",
+      "Log monitoring and analysis",
+    ],
+    challenges:
+      "Integrating Python with Synology Samba API to efficiently parse logs and retrieve directory/file structures across the network.",
+    category: "fullstack",
+    teamType: "individual",
+  },
+
+  {
+    id: 5,
     title: "CI/CD Deployment Pipeline",
     description:
       "Efficient continuous integration and deployment pipeline for web applications, streamlining the development workflow and reducing deployment time.",
@@ -133,34 +146,27 @@ const projects: Project[] = [
     challenges:
       "Implementing a reliable deployment process that could handle multiple applications while maintaining consistency across environments.",
     category: "infrastructure",
+    teamType: "individual",
   },
+
   {
-    id: 5,
-    title: "Multimedia Logging Software",
+    id: 6,
+    title: "Portal",
     description:
-      "Custom logging software for multimedia team that significantly reduced work time and improved content management productivity.",
-    technologies: [
-      "Laravel",
-      "PHP",
-      "MariaDB",
-      "React.js",
-      "Docker",
-      "File Management API",
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    ],
-    githubUrl: "https://github.com",
+      "Main web application for comprehensive business management, handling business reports, messaging, and various operational tasks in a unified platform.",
+    technologies: ["PHP", "Bootstrap", "jQuery", "MariaDB"],
+    images: ["/portal/app1.webp", "/portal/app2.webp", "/portal/app3.webp"],
     features: [
-      "Activity tracking",
-      "File management",
-      "Progress monitoring",
-      "Team collaboration",
-      "Automated reports",
+      "Business report management",
+      "Messaging system",
+      "Task management",
+      "Operational dashboard",
+      "User management",
     ],
     challenges:
-      "Creating an intuitive interface that could handle complex multimedia workflows while providing detailed tracking and reporting.",
+      "Building a scalable and modular platform that integrates multiple business functions while maintaining performance and user experience.",
     category: "fullstack",
+    teamType: "team",
   },
 ];
 
@@ -212,8 +218,8 @@ const Projects = () => {
         <div className="reveal mb-16 text-center opacity-0">
           <h2 className="section-title">Projects</h2>
           <p className="section-subtitle mx-auto">
-            Explore my recent backend development work, from microservices to
-            serverless applications.
+            Explore my recent work across backend, frontend, infrastructure, and
+            networking projects.
           </p>
 
           {/* Category Filter */}
@@ -241,56 +247,43 @@ const Projects = () => {
               className="reveal group relative overflow-hidden rounded-lg bg-card opacity-0 shadow-card transition-all duration-500 hover:shadow-card-hover"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div
-                className="blur-load h-48 w-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${project.images[0]})` }}
-              >
-                <img
-                  src={project.images[0]}
-                  alt={project.title}
-                  className="h-full w-full object-cover object-center transition-all duration-300 group-hover:scale-105"
-                  loading="lazy"
-                  onLoad={e => {
-                    (e.target as HTMLElement).parentElement?.classList.add(
-                      "loaded"
-                    );
-                  }}
-                />
-              </div>
+              <div className="relative">
+                <ImageCarousel images={project.images} alt={project.title} />
 
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="flex transform items-center gap-2 rounded-full bg-background px-4 py-2 font-medium text-foreground transition-all hover:scale-105"
-                  >
-                    <Eye size={16} />
-                    <span>Details</span>
-                  </button>
-
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex transform items-center gap-2 rounded-full bg-card px-4 py-2 font-medium text-foreground transition-all hover:scale-105"
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  <div className="flex gap-4">
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="flex transform items-center gap-2 rounded-full bg-background px-4 py-2 font-medium text-foreground transition-all hover:scale-105"
                     >
-                      <Github size={16} />
-                      <span>Code</span>
-                    </a>
-                  )}
+                      <Eye size={16} />
+                      <span>Details</span>
+                    </button>
 
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex transform items-center gap-2 rounded-full bg-primary px-4 py-2 font-medium text-white transition-all hover:scale-105"
-                    >
-                      <ExternalLink size={16} />
-                      <span>Demo</span>
-                    </a>
-                  )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex transform items-center gap-2 rounded-full bg-card px-4 py-2 font-medium text-foreground transition-all hover:scale-105"
+                      >
+                        <Github size={16} />
+                        <span>Code</span>
+                      </a>
+                    )}
+
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex transform items-center gap-2 rounded-full bg-primary px-4 py-2 font-medium text-white transition-all hover:scale-105"
+                      >
+                        <ExternalLink size={16} />
+                        <span>Demo</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -311,7 +304,26 @@ const Projects = () => {
                   )}
                 </div>
 
-                <h3 className="mb-2 text-xl font-bold">{project.title}</h3>
+                <div className="mb-2 flex items-center gap-2">
+                  <h3 className="text-xl font-bold">{project.title}</h3>
+                  <span
+                    className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${
+                      project.teamType === "individual"
+                        ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                        : "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                    }`}
+                  >
+                    {project.teamType === "individual" ? (
+                      <>
+                        <User size={12} /> Solo
+                      </>
+                    ) : (
+                      <>
+                        <Users size={12} /> Team
+                      </>
+                    )}
+                  </span>
+                </div>
                 <p className="line-clamp-2 text-muted-foreground">
                   {project.description}
                 </p>
@@ -320,7 +332,7 @@ const Projects = () => {
                   onClick={() => setSelectedProject(project)}
                   className="mt-4 inline-flex items-center text-primary hover:underline"
                 >
-                  Learn more
+                  Details
                   <svg
                     className="ml-1 h-3 w-3 transform transition-transform group-hover:translate-x-1"
                     fill="none"

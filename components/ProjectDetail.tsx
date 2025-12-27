@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { X, ArrowLeft, ArrowRight } from "lucide-react";
+import { X, ArrowLeft, ArrowRight, User, Users } from "lucide-react";
 import type { Project } from "./Projects";
 
 interface ProjectDetailProps {
@@ -11,23 +11,6 @@ interface ProjectDetailProps {
 
 const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    // Prevent scrolling when modal is open
-    document.body.style.overflow = "hidden";
-
-    // Handle escape key
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = "auto";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose]);
 
   const nextImage = () => {
     setCurrentImageIndex(prev => (prev + 1) % project.images.length);
@@ -39,11 +22,30 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
     );
   };
 
+  useEffect(() => {
+    // Prevent scrolling when modal is open
+    document.body.style.overflow = "hidden";
+
+    // Handle keyboard navigation
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose, project.images.length]);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-sm">
       <div className="absolute inset-0 z-0" onClick={onClose}></div>
 
-      <div className="relative z-10 w-full max-w-4xl animate-scale-in overflow-hidden rounded-lg bg-card shadow-lg top-20">
+      <div className="relative top-20 z-10 w-full max-w-4xl animate-scale-in overflow-hidden rounded-lg bg-card shadow-lg">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-20 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -52,12 +54,12 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
         </button>
 
         {/* Image gallery */}
-        <div className="relative h-64 overflow-hidden bg-black md:h-80">
+        <div className="relative h-72 overflow-hidden bg-secondary/50 md:h-96">
           {project.images.length > 0 && (
             <img
               src={project.images[currentImageIndex]}
               alt={`${project.title} screenshot ${currentImageIndex + 1}`}
-              className="h-full w-full object-cover object-top"
+              className="h-full w-full object-contain"
             />
           )}
 
@@ -92,7 +94,26 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
         </div>
 
         <div className="p-6 md:p-8">
-          <h3 className="mb-4 text-2xl font-bold">{project.title}</h3>
+          <div className="mb-4 flex items-center gap-3">
+            <h3 className="text-2xl font-bold">{project.title}</h3>
+            <span
+              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium ${
+                project.teamType === "individual"
+                  ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                  : "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+              }`}
+            >
+              {project.teamType === "individual" ? (
+                <>
+                  <User size={14} /> Solo Project
+                </>
+              ) : (
+                <>
+                  <Users size={14} /> Team Project
+                </>
+              )}
+            </span>
+          </div>
 
           <p className="mb-6 text-muted-foreground">{project.description}</p>
 
