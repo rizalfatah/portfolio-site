@@ -13,8 +13,28 @@ interface TimelineItem {
 const timelineItems: TimelineItem[] = [
   {
     id: 1,
+    title: "IT Mentor/Advisor",
+    organization: "Merapi Online Corp",
+    period: "October 2022 - January 2025",
+    description:
+      "Provided mentoring and guidance to new IT team post-management transition. Reviewed infrastructure, SOPs, and technical documentation to ensure consistency and stability. Facilitated knowledge transfer and standardized workflows for network, server, and application management. Served as strategic technical advisor for IT infrastructure and systems.",
+    skills: [
+      "Docker",
+      "LXC",
+      "Proxmox",
+      "Laravel",
+      "Node.js",
+      "React.js",
+      "MariaDB",
+      "Zabbix",
+      "Communication",
+    ],
+    type: "work",
+  },
+  {
+    id: 2,
     title: "IT Manager",
-    organization: "Merapi Online Corporation",
+    organization: "Merapi Online Corp",
     period: "October 2022 - January 2025",
     description:
       "Led technical team (Support, Network, Developer) and managed entire IT infrastructure including hardware, software, and networks. Designed and implemented automated parking system that significantly increased operational efficiency and reduced labor costs. Built on-premise containerized servers (Docker, LXC) saving external infrastructure subscription costs.",
@@ -32,10 +52,10 @@ const timelineItems: TimelineItem[] = [
     type: "work",
   },
   {
-    id: 2,
-    title: "Software Engineer (Freelance)",
-    organization: "Sinergi Visi Utama",
-    period: "2023",
+    id: 3,
+    title: "Fullstack Developer (Remote)",
+    organization: "PT Sinergi Visi Utama",
+    period: "January 2024 - July 2024",
     description:
       "Built web application for recording and managing reading interest data for Community Reading Gardens (TGM) & Mobile Library Units (UPK). Responsible for the entire development cycle from database design to user interface implementation.",
     skills: [
@@ -48,12 +68,12 @@ const timelineItems: TimelineItem[] = [
     type: "work",
   },
   {
-    id: 3,
-    title: "IT System Administrator (Freelance)",
+    id: 4,
+    title: "IT System Administrator (Remote)",
     organization: "PT Sadasa Akademi Indonesia",
-    period: "2023",
+    period: "December 2023 - May 2024",
     description:
-      "Deployed 'Sehatcerdas' application on government Virtual Private Server (VPS). Configured server environment, database, and web server to ensure optimal and secure application performance.",
+      "Deployed 'Sehatcerdas' application on Virtual Private Server (VPS). Configured server environment, database, and web server to ensure optimal and secure application performance.",
     skills: [
       "VPS Management",
       "Server Configuration",
@@ -64,9 +84,9 @@ const timelineItems: TimelineItem[] = [
     type: "work",
   },
   {
-    id: 4,
+    id: 5,
     title: "IT Support & Infrastructure Specialist",
-    organization: "Merapi Online Corporation",
+    organization: "Merapi Online Corp",
     period: "May 2018 - September 2022",
     description:
       "Built, managed, and monitored server and network infrastructure for operational stability and security. Managed virtualization and container-based servers (Docker, LXC Proxmox) for scalable applications. Developed and deployed internal web applications based on business needs. Implemented system security policies and performed regular data backups.",
@@ -82,7 +102,7 @@ const timelineItems: TimelineItem[] = [
     type: "work",
   },
   {
-    id: 5,
+    id: 6,
     title: "Machine Learning Participant",
     organization: "Bangkit Academy by Google, GoTo, & Traveloka",
     period: "2022",
@@ -99,7 +119,7 @@ const timelineItems: TimelineItem[] = [
     type: "certification",
   },
   {
-    id: 6,
+    id: 7,
     title: "S1 Informatika",
     organization: "Universitas AKPRIND Indonesia",
     period: "September 2019 - August 2025",
@@ -115,7 +135,7 @@ const timelineItems: TimelineItem[] = [
     type: "education",
   },
   {
-    id: 7,
+    id: 8,
     title: "Teknik Komputer dan Jaringan",
     organization: "SMK Negeri 1 Sukoharjo",
     period: "2015 - 2018",
