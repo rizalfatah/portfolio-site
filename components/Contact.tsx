@@ -150,7 +150,10 @@ const Contact = () => {
                 </div>
                 <p className="text-muted-foreground">
                   Currently
-                  <div className="mx-1 inline-block h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
+                  <span
+                    aria-hidden="true"
+                    className="mx-1 inline-block h-2 w-2 animate-pulse rounded-full bg-green-500"
+                  />
                   <span className="mr-1 font-medium text-green-500">
                     Available
                   </span>

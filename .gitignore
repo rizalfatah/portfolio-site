@@ -33,3 +33,7 @@ dist-ssr
 
 # Vercel
 .vercel
+
+# Cloudflare local state and credentials
+.wrangler/
+.dev.vars*

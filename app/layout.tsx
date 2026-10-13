@@ -6,6 +6,7 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rizalfatah.my.id"),
   title: "Rizal Saifulloh Fatah | Backend Developer",
   description:
     "Portfolio website of Rizal Saifulloh Fatah - Backend Developer specializing in modern web technologies",

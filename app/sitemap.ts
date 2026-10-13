@@ -1,13 +1,14 @@
 import { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://rizalfatah.com",
+      url: "https://rizalfatah.my.id",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
   ];
 }
-

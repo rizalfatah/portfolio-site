@@ -126,15 +126,15 @@ const Hero = () => {
   return (
     <div
       ref={heroRef}
-      className="relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden bg-background pb-10 pt-32 text-foreground md:pt-24"
+      className="bg-background text-foreground relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden pt-32 pb-10 md:pt-24"
     >
       {/* Background elements */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/5 via-background to-background"></div>
-      <div className="absolute inset-0 z-0 bg-grid-pattern opacity-30"></div>
+      <div className="from-primary/5 via-background to-background absolute inset-0 z-0 bg-gradient-to-b"></div>
+      <div className="bg-grid-pattern absolute inset-0 z-0 opacity-30"></div>
 
       {/* Animated Floating Elements */}
       <div
-        className="parallax absolute left-1/4 top-1/4 text-primary/30 will-change-transform"
+        className="parallax text-primary/30 absolute top-1/4 left-1/4 will-change-transform"
         data-speed="1"
       >
         <Database
@@ -144,7 +144,7 @@ const Hero = () => {
         />
       </div>
       <div
-        className="parallax absolute bottom-1/4 right-1/4 text-accent/30 will-change-transform"
+        className="parallax text-accent/30 absolute right-1/4 bottom-1/4 will-change-transform"
         data-speed="1.5"
       >
         <Server
@@ -154,7 +154,7 @@ const Hero = () => {
         />
       </div>
       <div
-        className="parallax absolute right-1/3 top-1/3 text-primary/30 will-change-transform"
+        className="parallax text-primary/30 absolute top-1/3 right-1/3 will-change-transform"
         data-speed="2"
       >
         <Code
@@ -165,7 +165,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container z-10 mx-auto px-6 lg:px-8">
+      <div className="z-10 container mx-auto px-6 lg:px-8">
         {/* Personal Info Card */}
         <div className="mx-auto max-w-4xl">
           {/* Header with Avatar and Basic Info */}
@@ -174,8 +174,8 @@ const Hero = () => {
               className="animate-slide-down"
               style={{ animationDelay: "200ms" }}
             >
-              <div className="mx-auto mb-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary to-accent p-1">
-                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-background">
+              <div className="from-primary to-accent mx-auto mb-6 h-32 w-32 rounded-full bg-gradient-to-br p-1">
+                <div className="bg-background flex h-full w-full items-center justify-center overflow-hidden rounded-full">
                   <img
                     src="/me.webp"
                     alt="Rizal Saifulloh Fatah"
@@ -192,7 +192,7 @@ const Hero = () => {
               <h1 className="mb-4 text-4xl font-bold md:text-6xl">
                 Rizal Saifulloh Fatah
               </h1>
-              <div className="mb-4 flex items-center justify-center gap-2 text-muted-foreground">
+              <div className="text-muted-foreground mb-4 flex items-center justify-center gap-2">
                 <MapPin size={16} />
                 <span>Sukoharjo, Indonesia</span>
                 <span className="ml-2 h-2 w-2 animate-pulse rounded-full bg-green-500"></span>
@@ -205,7 +205,7 @@ const Hero = () => {
               style={{ animationDelay: "400ms" }}
             >
               <div className="mb-6 flex h-12 items-center justify-center text-2xl font-semibold md:text-3xl">
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <span className="from-primary to-accent bg-gradient-to-r bg-clip-text text-transparent">
                   {displayText}
                   <span className="animate-pulse">|</span>
                 </span>
@@ -213,7 +213,7 @@ const Hero = () => {
             </div>
 
             <p
-              className="mx-auto mb-8 max-w-2xl animate-slide-down text-lg text-muted-foreground"
+              className="animate-slide-down text-muted-foreground mx-auto mb-8 max-w-2xl text-lg"
               style={{ animationDelay: "500ms" }}
             >
               IT Manager and Full-Stack Developer with 6+ years of experience in
@@ -226,7 +226,7 @@ const Hero = () => {
 
           {/* Stats Grid */}
           <div
-            className="mb-12 flex animate-slide-down flex-wrap justify-center gap-6"
+            className="animate-slide-down mb-12 flex flex-wrap justify-center gap-6"
             style={{ animationDelay: "600ms" }}
           >
             {stats.map((stat, index) => {
@@ -234,13 +234,13 @@ const Hero = () => {
               return (
                 <div
                   key={index}
-                  className="min-w-[150px] max-w-[300px] flex-1 rounded-lg border border-border bg-card/50 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-card/70"
+                  className="border-border bg-card/50 hover:bg-card/70 max-w-[300px] min-w-[150px] flex-1 rounded-lg border p-6 text-center backdrop-blur-sm transition-all duration-300 hover:scale-105"
                 >
-                  <Icon className="mx-auto mb-3 h-8 w-8 text-primary" />
-                  <div className="mb-1 text-2xl font-bold text-foreground">
+                  <Icon className="text-primary mx-auto mb-3 h-8 w-8" />
+                  <div className="text-foreground mb-1 text-2xl font-bold">
                     {stat.value.toLocaleString()}
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-muted-foreground text-sm">
                     {stat.label}
                   </div>
                 </div>
@@ -250,7 +250,7 @@ const Hero = () => {
 
           {/* Action Buttons */}
           <div
-            className="mb-8 flex animate-slide-down flex-col items-center justify-center gap-8 sm:flex-row"
+            className="animate-slide-down mb-8 flex flex-col items-center justify-center gap-8 sm:flex-row"
             style={{ animationDelay: "700ms" }}
           >
             <div className="group relative">
@@ -260,12 +260,12 @@ const Hero = () => {
                     .getElementById("contact")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="relative flex transform items-center gap-3 border-4 border-gray-900 bg-yellow-400 px-8 py-4 text-lg font-black uppercase tracking-wide text-black transition-all duration-200 hover:translate-x-[-4px] hover:translate-y-[-4px] active:translate-x-0 active:translate-y-0 dark:border-white"
+                className="relative flex transform items-center gap-3 border-4 border-gray-900 bg-yellow-400 px-8 py-4 text-lg font-black tracking-wide text-black uppercase transition-all duration-200 hover:translate-x-[-4px] hover:translate-y-[-4px] active:translate-x-0 active:translate-y-0 dark:border-white"
               >
                 <Mail size={20} className="font-bold" />
                 Get in Touch
               </button>
-              <div className="absolute left-1 top-1 -z-10 h-full w-full bg-gray-900 dark:bg-white"></div>
+              <div className="absolute top-1 left-1 -z-10 h-full w-full bg-gray-900 dark:bg-white"></div>
               <div className="absolute -bottom-2 left-0 h-1 w-0 bg-red-500 transition-all duration-300 ease-out group-hover:w-full"></div>
             </div>
 
@@ -276,25 +276,25 @@ const Hero = () => {
                     .getElementById("projects")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="relative flex transform items-center gap-3 border-4 border-gray-900 bg-cyan-400 px-8 py-4 text-lg font-black uppercase tracking-wide text-black transition-all duration-200 hover:translate-x-[-4px] hover:translate-y-[-4px] active:translate-x-0 active:translate-y-0 dark:border-white"
+                className="relative flex transform items-center gap-3 border-4 border-gray-900 bg-cyan-400 px-8 py-4 text-lg font-black tracking-wide text-black uppercase transition-all duration-200 hover:translate-x-[-4px] hover:translate-y-[-4px] active:translate-x-0 active:translate-y-0 dark:border-white"
               >
                 <Code size={20} className="font-bold" />
                 View Projects
               </button>
-              <div className="absolute left-1 top-1 -z-10 h-full w-full bg-gray-900 dark:bg-white"></div>
+              <div className="absolute top-1 left-1 -z-10 h-full w-full bg-gray-900 dark:bg-white"></div>
               <div className="absolute -bottom-2 left-0 h-1 w-0 bg-fuchsia-500 transition-all duration-300 ease-out group-hover:w-full"></div>
             </div>
           </div>
 
           {/* Social Links */}
           <div
-            className="flex animate-slide-down items-center justify-center gap-6"
+            className="animate-slide-down flex items-center justify-center gap-6"
             style={{ animationDelay: "800ms" }}
           >
             <a
               href="https://github.com/rizalfatah"
               target="_blank"
-              className="group rounded-full border border-border bg-card/50 p-3 transition-all duration-300 hover:scale-110 hover:bg-card/70"
+              className="group border-border bg-card/50 hover:bg-card/70 rounded-full border p-3 transition-all duration-300 hover:scale-110"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -303,10 +303,10 @@ const Hero = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="h-5 w-5 text-muted-foreground group-hover:text-foreground"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-muted-foreground group-hover:text-foreground h-5 w-5"
               >
                 <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
                 <path d="M9 18c-4.51 2-5-2-7-2" />
@@ -315,7 +315,7 @@ const Hero = () => {
             <a
               href="https://www.linkedin.com/in/rizal-saifulloh-fatah-306414154/"
               target="_blank"
-              className="group rounded-full border border-border bg-card/50 p-3 transition-all duration-300 hover:scale-110 hover:bg-card/70"
+              className="group border-border bg-card/50 hover:bg-card/70 rounded-full border p-3 transition-all duration-300 hover:scale-110"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -324,10 +324,10 @@ const Hero = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="h-5 w-5 text-muted-foreground group-hover:text-foreground"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-muted-foreground group-hover:text-foreground h-5 w-5"
               >
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                 <rect width="4" height="12" x="2" y="9" />
@@ -337,9 +337,9 @@ const Hero = () => {
             <a
               href="mailto:rizal.fatah.rsf@gmail.com"
               target="_blank"
-              className="group rounded-full border border-border bg-card/50 p-3 transition-all duration-300 hover:scale-110 hover:bg-card/70"
+              className="group border-border bg-card/50 hover:bg-card/70 rounded-full border p-3 transition-all duration-300 hover:scale-110"
             >
-              <Mail className="h-5 w-5 text-muted-foreground group-hover:text-foreground" />
+              <Mail className="text-muted-foreground group-hover:text-foreground h-5 w-5" />
             </a>
           </div>
         </div>
